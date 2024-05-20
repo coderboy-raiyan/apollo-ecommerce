@@ -3,8 +3,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { NextFunction, Request, Response } from 'express';
 import httpStatus from 'http-status';
+import { ZodError } from 'zod';
 import config from '../../config';
 import ApiError from '../errors/ApiError';
+import handleZodError from '../errors/handleZodError';
 import { TErrorSources } from '../interface/error';
 
 function globalErrorHandler(error: any, req: Request, res: Response, next: NextFunction) {
@@ -26,6 +28,11 @@ function globalErrorHandler(error: any, req: Request, res: Response, next: NextF
                 message: error.message,
             },
         ];
+    } else if (error instanceof ZodError) {
+        const modifiedError = handleZodError(error);
+        statusCode = modifiedError.statusCode;
+        message = modifiedError.message;
+        errorSources = modifiedError.errorSources;
     } else if (error instanceof Error) {
         message = error.message;
         errorSources = [
