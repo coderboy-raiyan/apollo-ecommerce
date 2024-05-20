@@ -17,8 +17,20 @@ const createProduct = catchAsyncError(async (req: Request, res: Response) => {
     });
 });
 
+const getAllProducts = catchAsyncError(async (req: Request, res: Response) => {
+    const result = await ProductService.getAllProductsFromDB();
+
+    sendResponse<TProduct[]>(res, {
+        success: true,
+        message: 'Products fetched successfully!',
+        statusCode: httpStatus.OK,
+        data: result,
+    });
+});
+
 const ProductController = {
     createProduct,
+    getAllProducts,
 };
 
 export default ProductController;

@@ -5,6 +5,7 @@ import productValidationSchema from './product.validation';
 
 const router = Router();
 
+router.get('/', ProductController.getAllProducts);
 router.post('/', validateRequest(productValidationSchema), ProductController.createProduct);
 
 const ProductRoutes = router;
