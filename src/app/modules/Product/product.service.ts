@@ -20,12 +20,16 @@ const updateSingleProductToDB = async (productId: string, payload: TProduct): Pr
     const result = await Product.findByIdAndUpdate(productId, { ...payload }, { new: true });
     return result;
 };
+const deleteProductToDB = async (productId: string) => {
+    await Product.findByIdAndDelete(productId);
+};
 
 const ProductService = {
     createProductToDB,
     getAllProductsFromDB,
     getSingleProductFromDB,
     updateSingleProductToDB,
+    deleteProductToDB,
 };
 
 export default ProductService;
