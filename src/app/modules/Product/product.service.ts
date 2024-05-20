@@ -11,9 +11,21 @@ const getAllProductsFromDB = async (): Promise<TProduct[]> => {
     return result;
 };
 
+const getSingleProductFromDB = async (productId: string): Promise<TProduct> => {
+    const result = await Product.findById(productId);
+    return result;
+};
+
+const updateSingleProductToDB = async (productId: string, payload: TProduct): Promise<TProduct> => {
+    const result = await Product.findByIdAndUpdate(productId, { ...payload }, { new: true });
+    return result;
+};
+
 const ProductService = {
     createProductToDB,
     getAllProductsFromDB,
+    getSingleProductFromDB,
+    updateSingleProductToDB,
 };
 
 export default ProductService;
