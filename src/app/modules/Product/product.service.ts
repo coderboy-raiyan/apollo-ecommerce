@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { TProduct, TProductGetOrSearchResponse } from './product.interface';
+import { TGetAllProductsOrSearchResponse, TProduct } from './product.interface';
 import Product from './product.model';
 
 const createProductToDB = async (product: TProduct): Promise<TProduct> => {
@@ -9,10 +9,10 @@ const createProductToDB = async (product: TProduct): Promise<TProduct> => {
 
 const getAllProductsFromDB = async (
     searchTerm: string | null = null
-): Promise<TProductGetOrSearchResponse> => {
+): Promise<TGetAllProductsOrSearchResponse> => {
     const query: any = [];
     let result: TProduct[];
-    let response: TProductGetOrSearchResponse;
+    let response: TGetAllProductsOrSearchResponse;
 
     if (searchTerm && searchTerm !== '') {
         query.push({ name: { $regex: searchTerm, $options: 'i' } });

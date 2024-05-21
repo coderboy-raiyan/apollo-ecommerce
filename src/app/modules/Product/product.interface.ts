@@ -17,7 +17,7 @@ export type TProduct = {
     };
 };
 
-export type TProductGetOrSearchResponse = {
+export type TGetAllProductsOrSearchResponse = {
     message: string;
     data: TProduct[];
 };
