@@ -1,7 +1,7 @@
 # Apollo-Ecommerce
 
 [Backend Live URL](https://apollo-ecommerce.vercel.app) <br/>
-[Post Collection](./Apollo-ecommerce.postman_collection.json)
+[Postman Collection](./Apollo-ecommerce.postman_collection.json)
 
 ---
 
