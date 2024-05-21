@@ -5,7 +5,7 @@ const variantValidationSchema = z.object({
     value: z.string(),
 });
 
-const productValidationSchema = z.object({
+export const productValidationSchema = z.object({
     body: z.object({
         name: z.string().max(100),
         description: z.string(),
@@ -21,4 +21,20 @@ const productValidationSchema = z.object({
     }),
 });
 
-export default productValidationSchema;
+export const productUpdateValidationSchema = z.object({
+    body: z.object({
+        name: z.string().max(100).optional(),
+        description: z.string().optional(),
+        price: z.number().min(0).optional(),
+        category: z.string().optional(),
+        tags: z.string().array().optional(),
+        variants: z.array(variantValidationSchema).optional(),
+        inventory: z
+            .object({
+                quantity: z.number().min(0),
+                inStock: z.boolean(),
+            })
+            .optional(),
+        images: z.string().array().optional(),
+    }),
+});
