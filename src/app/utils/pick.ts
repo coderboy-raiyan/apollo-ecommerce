@@ -1,5 +1,5 @@
 /* eslint-disable no-prototype-builtins */
-function pick<T, TKeys extends keyof T>(obj: T, keys: TKeys[]) {
+function pick<T>(obj: T, keys: (keyof T)[]) {
     const modifiedObj: T = {} as T;
 
     keys.forEach((key) => {

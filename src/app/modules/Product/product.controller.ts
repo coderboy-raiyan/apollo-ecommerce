@@ -18,13 +18,15 @@ const createProduct = catchAsyncError(async (req: Request, res: Response) => {
 });
 
 const getAllProducts = catchAsyncError(async (req: Request, res: Response) => {
-    const result = await ProductService.getAllProductsFromDB();
+    const { searchTerm } = req.query;
+
+    const result = await ProductService.getAllProductsFromDB(searchTerm as string);
 
     sendResponse<TProduct[]>(res, {
         success: true,
-        message: 'Products fetched successfully!',
+        message: result.message,
         statusCode: httpStatus.OK,
-        data: result,
+        data: result.data,
     });
 });
 

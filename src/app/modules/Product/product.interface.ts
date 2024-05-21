@@ -16,3 +16,8 @@ export type TProduct = {
         inStock: boolean;
     };
 };
+
+export type TProductGetOrSearchResponse = {
+    message: string;
+    data: TProduct[];
+};
