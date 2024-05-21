@@ -1,8 +1,39 @@
+import httpStatus from 'http-status';
+import ApiError from '../../errors/ApiError';
+import Product from '../Product/product.model';
 import { TGetAllOrdersOrSearchByEmailResponse, TOrder } from './order.interface';
 import Order from './order.model';
 
 const createOrderToDB = async (order: TOrder): Promise<TOrder> => {
+    const { productId, quantity } = order;
+    const isProductExists = await Product.findById(productId);
+    if (!isProductExists) {
+        throw new ApiError(httpStatus.NOT_FOUND, 'Order not found');
+    }
+
+    if (isProductExists.inventory.quantity < 1) {
+        throw new ApiError(
+            httpStatus.NOT_ACCEPTABLE,
+            'Insufficient quantity available in inventory'
+        );
+    }
+
     const result = await Order.create(order);
+
+    const reducedQtyProduct = await Product.findByIdAndUpdate(
+        isProductExists._id,
+        {
+            $inc: { 'inventory.quantity': -quantity },
+        },
+        { new: true }
+    );
+
+    if (reducedQtyProduct.inventory.quantity <= 0) {
+        await Product.findByIdAndUpdate(isProductExists._id, {
+            'inventory.inStock': false,
+        });
+    }
+
     return result;
 };
 
