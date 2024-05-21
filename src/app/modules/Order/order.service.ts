@@ -46,6 +46,14 @@ const getAllOrdersFromDB = async (
     if (email && email !== '') {
         result = await Order.find({ email });
 
+        if (!result.length) {
+            response = {
+                message: `No order found for the user with email "${email}".`,
+                data: result,
+            };
+            return response;
+        }
+
         response = {
             message: `Orders fetched successfully for user '${email}!'`,
             data: result,

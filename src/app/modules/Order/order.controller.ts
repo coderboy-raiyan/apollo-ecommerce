@@ -20,8 +20,8 @@ const getAllOrders = catchAsyncError(async (req: Request, res: Response) => {
     const { email } = req.query;
     const result = await OrderService.getAllOrdersFromDB(email as string);
     sendResponse<TOrder[]>(res, {
-        success: true,
-        statusCode: httpStatus.OK,
+        success: result.data.length !== 0,
+        statusCode: result.data.length !== 0 ? httpStatus.OK : httpStatus.NOT_FOUND,
         message: result.message,
         data: result.data,
     });
