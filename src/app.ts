@@ -19,7 +19,7 @@ app.use(
 );
 
 app.get('/', (req: Request, res: Response) => {
-    res.status(httpStatus.OK).json({ success: true, message: 'Server is healthy!!' });
+    res.status(httpStatus.OK).json({ success: true, message: 'Server is healthy!' });
 });
 
 app.use('/api', router);
