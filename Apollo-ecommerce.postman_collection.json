@@ -1,0 +1,226 @@
+{
+	"info": {
+		"_postman_id": "247b3011-91ce-4d6e-9c88-7ca2c5c6e96f",
+		"name": "Apollo-ecommerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16692702"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "create-user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": {\r\n        \"name\": \"Level-2 Admin\",\r\n        \"email\": \"level2@programming-hero.com\",\r\n        \"password\": \"hashedpassword123\", // This should be the hashed version of the actual password\r\n        \"homeAddress\": \"123 Main Street, Hometown, HT 12345\",\r\n        \"officeAddress\": \"456 Business Rd, Metropolis, MT 67890\",\r\n        \"contactNo\": 1234567890,\r\n        \"role\" : \"admin\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apollo-ecom}}/users/register",
+							"host": [
+								"{{apollo-ecom}}"
+							],
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "create-product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Running Shoes\",\r\n    \"description\": \"Lightweight running shoes with breathable mesh upper.\",\r\n    \"price\": 79.99,\r\n    \"category\": \"Footwear\",\r\n    \"tags\": [\"running\", \"shoes\", \"lightweight\", \"breathable\"],\r\n    \"variants\": [\r\n      {\r\n        \"type\": \"size\",\r\n        \"value\": \"8\"\r\n      },\r\n      {\r\n        \"type\": \"size\",\r\n        \"value\": \"9\"\r\n      },\r\n      {\r\n        \"type\": \"size\",\r\n        \"value\": \"10\"\r\n      }\r\n    ],\r\n    \"inventory\": {\r\n      \"quantity\": 120,\r\n      \"inStock\": true\r\n    }\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apollo-ecom}}/products",
+							"host": [
+								"{{apollo-ecom}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-single-product",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"iPhone 13 Pro\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apollo-ecom}}/products/664b8e00e1cca3138ea423a9",
+							"host": [
+								"{{apollo-ecom}}"
+							],
+							"path": [
+								"products",
+								"664b8e00e1cca3138ea423a9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-all-products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apollo-ecom}}/products",
+							"host": [
+								"{{apollo-ecom}}"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "searchTerm",
+									"value": "blue",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-single-product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apollo-ecom}}/products/664b8a0f5d9e5b7910470b1a",
+							"host": [
+								"{{apollo-ecom}}"
+							],
+							"path": [
+								"products",
+								"664b8a0f5d9e5b7910470b1a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{apollo-ecom}}/products/664b8e00e1cca3138ea423a9",
+							"host": [
+								"{{apollo-ecom}}"
+							],
+							"path": [
+								"products",
+								"664b8e00e1cca3138ea423a9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "create-new-order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"level8@programming-hero.com\",\r\n    \"productId\":\"664c73ec9c3e5a1a4476ffac\",\r\n    \"price\": 999,\r\n    \"quantity\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apollo-ecom}}/orders",
+							"host": [
+								"{{apollo-ecom}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-all-orders",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"level2@programming-hero.com\",\r\n    \"productId\":[\"664b8a0f5d9e5b7910470b1a\", \"664b8a0f5d9e5b7910470b1a\"],\r\n    \"price\": 999,\r\n    \"quantity\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apollo-ecom}}/orders?email=level2@programming-hero.com",
+							"host": [
+								"{{apollo-ecom}}"
+							],
+							"path": [
+								"orders"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "level2@programming-hero.com"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

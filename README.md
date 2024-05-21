@@ -1,16 +1,9 @@
 # Apollo-Ecommerce
 
+[Backend URL](https://apollo-ecommerce.vercel.app) <br/>
+[Post Collection](./Apollo-ecommerce.postman_collection.json)
+
 **Objective:** Develop a Express application with TypeScript as the programming language, integrating MongoDB with Mongoose for effective data management. Ensure data integrity through validation using Joi/Zod.
-
-### Set up the Project
-
--   Create a new Express project.
--   Set up a MongoDB database using Mongoose for storing user and order data.
-
-### Define Data Models
-
--   Create Mongoose models for **Product** data based on the provided data structure. (You can follow [sample-data.json](./sample-data.json) file for ideas).
--   Define appropriate data types, validations.
 
 ### E-commerce Product Data Types
 
@@ -386,20 +379,6 @@
     }
     ```
 
-## **Bonus Section (10 Marks):**
-
-**Inventory Update**:
-
-When creating new order (**`/api/orders`** ) ,reduce the `quantity` of the ordered product in inventory and update the **`inStock`** property.
-
-### **Inventory Management Logic**
-
--   When a new order is created, the system should check the available quantity in inventory.
--   If the ordered quantity exceeds the available quantity, return an error response indicating insufficient stock.
--   Update the inventory quantity and **`inStock`** status based on the ordered quantity:
-    -   If the inventory quantity reaches zero, set **`inStock`** to **`false`**.
-    -   Otherwise, keep **`inStock`** as **`true`**.
-
 ## **Error Handling:**
 
 ### **Sample Error Responses**
@@ -430,34 +409,3 @@ When creating new order (**`/api/orders`** ) ,reduce the `quantity` of the order
  "message": "Route not found"
 }
 ```
-
-### **Validation with Joi/Zod**
-
--   Use **Joi/Zod** to validate incoming data for user and order creation and updating operations.
--   Ensure that the data adheres to the structure defined in the models.
--   Handle validation errors gracefully and provide meaningful error messages in the API responses.
-
-## Instructions
-
-1. **Coding Quality:**
-    - Write clean, modular, and well-organized code.
-    - Follow consistent naming conventions for variables, functions, and routes.
-    - Use meaningful names that reflect the purpose of variables and functions.
-    - Ensure that the code is readable.
-2. **Comments:**
-    - Try to provide inline comments to explain complex sections of code or logic.
-3. **API Endpoint Adherence:**
-    - Strictly follow the provided API endpoint structure and naming conventions.
-    - Ensure that the request and response formats match the specifications outlined in the assignment.
-4. **Validation and Error Handling:**
-    - Implement validation using Joi/Zod for both user and order data.
-    - Handle validation errors gracefully and provide meaningful error messages in the API responses.
-    - Implement error handling for scenarios like user not found, validation errors.
-5. **Coding Tools and Libraries:**
-    - Avoid the use of AI tools or libraries for generating code. Write the code manually to demonstrate a clear understanding of the concepts.
-    - Utilize only the specified libraries like Express, Mongoose, Joi and avoid unnecessary dependencies.
-6. **Coding Style:**
-    - Consider using linting tools (e.g., **ESLint**) to enforce coding style and identify potential issues.
-    - Ensure there are at least 10 commits in your GitHub repository.
-
-**_Not following the specified API endpoint structure, naming conventions, and other instructions will result in a deduction of marks._**
