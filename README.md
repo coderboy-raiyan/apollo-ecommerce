@@ -1,7 +1,18 @@
 # Apollo-Ecommerce
 
-[Backend URL](https://apollo-ecommerce.vercel.app) <br/>
+[Backend Live URL](https://apollo-ecommerce.vercel.app) <br/>
 [Post Collection](./Apollo-ecommerce.postman_collection.json)
+
+---
+
+### How to run locally
+
+1. Clone the repo
+2. run command `yarn`
+3. set the **.env** from the **.env.example** file
+4. lastly run `yarn start:dev` command to run this project locally
+
+---
 
 **Objective:** Develop a Express application with TypeScript as the programming language, integrating MongoDB with Mongoose for effective data management. Ensure data integrity through validation using Joi/Zod.
 
